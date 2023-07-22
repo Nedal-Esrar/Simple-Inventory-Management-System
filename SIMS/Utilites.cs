@@ -30,4 +30,24 @@ public static class Utilites
 
     return name.Trim();
   }
+  
+  /// <summary>
+  /// Prompts the user to input a price and loops until a valid price input is provided.
+  /// A valid price is a price that is a decimal that is greater than zero.
+  /// </summary>
+  /// <returns>The valid price input</returns>
+  public static decimal GetPriceInput()
+  {
+    string input;
+
+    decimal price;
+    
+    do
+    {
+      Console.Write("Price: ");
+      input = Console.ReadLine();
+    } while (!decimal.TryParse(input, out price) || price <= 0);
+
+    return price;
+  }
 }
