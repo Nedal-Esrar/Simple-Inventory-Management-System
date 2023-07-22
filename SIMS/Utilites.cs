@@ -50,4 +50,24 @@ public static class Utilites
 
     return price;
   }
+  
+  /// <summary>
+  /// Prompts the user to input a quantity and Loops until a valid quantity input is provided.
+  /// A valid quantity is a quantity that is an integer and greater than zero.
+  /// </summary>
+  /// <returns>The valid quantity input</returns>
+  public static int GetQuantityInput()
+  {
+    string input;
+
+    int quantity;
+    
+    do
+    {
+      Console.Write("Quantity: ");
+      input = Console.ReadLine();
+    } while (!int.TryParse(input, out quantity) || quantity < 1);
+
+    return quantity;
+  }
 }
