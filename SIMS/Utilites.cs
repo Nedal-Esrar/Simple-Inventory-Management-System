@@ -85,4 +85,11 @@ public static class Utilites
     Console.WriteLine("5. Search for a product");
     Console.WriteLine("6. Exit");
   }
+  
+  public static void DisplayEditMenu()
+  {
+    Console.WriteLine("1. Product name");
+    Console.WriteLine("2. Product price");
+    Console.WriteLine("3. Product quantity");
+  }
 }
