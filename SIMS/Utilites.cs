@@ -70,4 +70,9 @@ public static class Utilites
 
     return quantity;
   }
+  
+  public static void DisplayStars()
+  {
+    Console.WriteLine("***********************************************************************************");
+  }
 }
