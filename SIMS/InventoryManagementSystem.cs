@@ -130,7 +130,69 @@ public class InventoryManagementSystem
 
   private void HandleEditChoice()
   {
-    throw new NotImplementedException();
+    Console.WriteLine("Please enter the name of the product you want to edit.");
+
+    string name = Utils.GetStringInput("Name");
+
+    int productIndex = _productInventory.GetProductIndex(name);
+    
+    Utils.DisplayStars();
+
+    if (productIndex == -1)
+    {
+      Console.WriteLine($"The product with the name {name} is not in the inventory.");
+
+      return;
+    }
+
+    Console.WriteLine("Choose one of the following properties of a product to edit [1..3]");
+    
+    Utils.DisplayEditMenu();
+    
+    Utils.DisplayStars();
+
+    string choice = Utils.GetStringInput("Choice");
+    
+    Utils.DisplayStars();
+
+    bool edited = true;
+
+    switch (choice)
+    {
+      case "1":
+        string newName = Utils.GetStringInput("Name");
+        
+        _productInventory.SetProductNameAt(productIndex, newName);
+        
+        break;
+      case "2":
+        decimal newPrice = Utils.GetPriceInput();
+        
+        _productInventory.SetProductPriceAt(productIndex, newPrice);
+        
+        break;
+      case "3":
+        int newQuantity = Utils.GetQuantityInput();
+        
+        _productInventory.SetProductQuantityAt(productIndex, newQuantity);
+
+        break;
+      default:
+        edited = false;
+
+        break;
+    }
+
+    if (edited)
+    {
+      Utils.DisplayStars();
+      
+      Console.WriteLine("The product has been edited successfully.");
+    }
+    else
+    {
+      Console.WriteLine("The choice is not in the range [1..3], nothing has changed.");
+    }
   }
 
   private void HandleDeleteChoice()
