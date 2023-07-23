@@ -219,6 +219,23 @@ public class InventoryManagementSystem
 
   private void HandleSearchChoice()
   {
-    throw new NotImplementedException();
+    Console.WriteLine("Please enter the name of the product you are looking for.");
+      
+    string name = Utils.GetStringInput("Name");
+
+    int productIndex = _productInventory.GetProductIndex(name);
+      
+    Utils.DisplayStars();
+
+    if (productIndex == -1)
+    {
+      Console.WriteLine($"The product with the name {name} is not in the inventory.");
+    }
+    else
+    {
+      IReadOnlyProduct product = _productInventory.GetProductAt(productIndex);
+        
+      Console.WriteLine($"Here is the information of the product you are looking for:\n{product}");
+    }
   }
 }
