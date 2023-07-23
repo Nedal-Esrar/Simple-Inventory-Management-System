@@ -73,7 +73,7 @@ public class InventoryManagementSystem
         
         break;
       case "6":
-        Console.WriteLine("Thank you for using Simple Inventory Management System ;)");
+        Console.WriteLine("Thank you for using Simple Inventory Management System ;)\nExiting now. Goodbye!");
 
         return true;
       default:
