@@ -87,11 +87,6 @@ public class InventoryManagementSystem
 
   private void HandleAddChoice()
   {
-    
-  }
-
-  private void HandleViewAllChoice()
-  {
     Console.WriteLine("Please enter the information of the product you want to add.");
 
     string name = Utils.GetStringInput("Name");
@@ -112,6 +107,11 @@ public class InventoryManagementSystem
     {
       Console.WriteLine("A product with the same name exists in the inventory; no changes were made.");
     }
+  }
+
+  private void HandleViewAllChoice()
+  {
+    throw new NotImplementedException();
   }
 
   private void HandleEditChoice()
