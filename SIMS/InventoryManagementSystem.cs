@@ -87,7 +87,26 @@ public class InventoryManagementSystem
 
   private void HandleAddChoice()
   {
-    throw new NotImplementedException();
+    Console.WriteLine("Please enter the information of the product you want to add.");
+
+    string name = Utils.GetStringInput("Name");
+
+    decimal price = Utils.GetPriceInput();
+
+    int quantity = Utils.GetQuantityInput();
+
+    bool success = _productInventory.AddProduct(name, price, quantity);
+    
+    Utils.DisplayStars();
+
+    if (success)
+    {
+      Console.WriteLine("The product has been added successfully.");
+    }
+    else
+    {
+      Console.WriteLine("A product with the same name exists in the inventory; no changes were made.");
+    }
   }
 
   private void HandleViewAllChoice()
