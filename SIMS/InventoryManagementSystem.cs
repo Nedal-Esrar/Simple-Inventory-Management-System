@@ -111,7 +111,21 @@ public class InventoryManagementSystem
 
   private void HandleViewAllChoice()
   {
-    throw new NotImplementedException();
+    if (_productInventory.Size == 0)
+    {
+      Console.WriteLine("The inventory is empty.");
+    }
+    else
+    {
+      int order = 1;
+      
+      foreach (var product in _productInventory)
+      {
+        Console.WriteLine($"{order}. {product}");
+
+        ++order;
+      }
+    }
   }
 
   private void HandleEditChoice()
