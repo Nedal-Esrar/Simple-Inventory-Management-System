@@ -197,7 +197,24 @@ public class InventoryManagementSystem
 
   private void HandleDeleteChoice()
   {
-    throw new NotImplementedException();
+    Console.WriteLine("Please enter the name of the product you want to delete.");
+    
+    string name = Utils.GetStringInput("Name");
+
+    int productIndex = _productInventory.GetProductIndex(name);
+    
+    Utils.DisplayStars();
+
+    if (productIndex == -1)
+    {
+      Console.WriteLine($"The product with the name {name} is not in the inventory.");
+    }
+    else
+    {
+      _productInventory.DeleteProductAt(productIndex);
+      
+      Console.WriteLine("The product has been deleted successfully.");
+    }
   }
 
   private void HandleSearchChoice()
