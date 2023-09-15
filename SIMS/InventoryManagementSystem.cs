@@ -1,4 +1,4 @@
-using Utils = SIMS.Utilites;
+using Utils = SIMS.Utilities;
 
 namespace SIMS;
 
