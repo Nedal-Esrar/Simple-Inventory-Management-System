@@ -1,6 +1,6 @@
 namespace SIMS.Models;
 
-public class Product : IReadOnlyProduct
+public class Product
 {
   public int Id { get; set; }
   
