@@ -1,17 +1,19 @@
+using SIMS.Exceptions;
+using SIMS.Inventories;
 using Utils = SIMS.Utilities;
 
 namespace SIMS;
 
 public class InventoryManagementSystem
 {
-  private Inventory _productInventory;
+  private readonly IInventory _inventory;
 
-  public InventoryManagementSystem()
+  public InventoryManagementSystem(IInventory inventory)
   {
-    _productInventory = new();
+    _inventory = inventory;
   }
   
-  public void Run()
+  public async Task Run()
   {
     Console.WriteLine("Welcome to Simple Inventory Management System!");
     
@@ -35,7 +37,7 @@ public class InventoryManagementSystem
       
       Utils.DisplayStars();
 
-      exit = HandleChoice(choice);
+      exit = await HandleChoice(choice);
     }
   }
 
@@ -48,28 +50,28 @@ public class InventoryManagementSystem
   /// True if the choice was exit choice (6);
   /// False otherwise.
   /// </returns>
-  private bool HandleChoice(string choice)
+  private async Task<bool> HandleChoice(string choice)
   {
     switch (choice)
     {
       case "1":
-        HandleAddChoice();
+        await HandleAddChoice();
         
         break;
       case "2":
-        HandleViewAllChoice();
+        await HandleViewAllChoice();
         
         break;
       case "3":
-        HandleEditChoice();
+        await HandleEditChoice();
         
         break;
       case "4":
-        HandleDeleteChoice();
+        await HandleDeleteChoice();
         
         break;
       case "5":
-        HandleSearchChoice();
+        await HandleSearchChoice();
         
         break;
       case "6":
@@ -85,60 +87,67 @@ public class InventoryManagementSystem
     return false;
   }
 
-  private void HandleAddChoice()
+  private async Task HandleAddChoice()
   {
     Console.WriteLine("Please enter the information of the product you want to add.");
 
-    string name = Utils.GetStringInput("Name");
+    string name = Utils.GetStringInput("Name").Capitalize();
 
     decimal price = Utils.GetPriceInput();
 
     int quantity = Utils.GetQuantityInput();
-
-    bool success = _productInventory.AddProduct(name, price, quantity);
     
     Utils.DisplayStars();
 
-    if (success)
+    try
     {
+      await _inventory.AddProduct(new()
+      {
+        Name = name,
+        Price = price,
+        Quantity = quantity
+      });
+      
       Console.WriteLine("The product has been added successfully.");
     }
-    else
+    catch (ProductAlreadyExistsException)
     {
       Console.WriteLine("A product with the same name exists in the inventory; no changes were made.");
     }
   }
 
-  private void HandleViewAllChoice()
+  private async Task HandleViewAllChoice()
   {
-    if (_productInventory.Size == 0)
-    {
-      Console.WriteLine("The inventory is empty.");
-    }
-    else
+    var products = await _inventory.GetAllProducts();
+
+    if (products.Any())
     {
       int order = 1;
       
-      foreach (var product in _productInventory)
+      foreach (var product in products)
       {
         Console.WriteLine($"{order}. {product}");
 
         ++order;
       }
     }
+    else
+    {
+      Console.WriteLine("The inventory is empty.");
+    }
   }
 
-  private void HandleEditChoice()
+  private async Task HandleEditChoice()
   {
     Console.WriteLine("Please enter the name of the product you want to edit.");
 
-    string name = Utils.GetStringInput("Name");
+    string name = Utils.GetStringInput("Name").Capitalize();
 
-    int productIndex = _productInventory.GetProductIndex(name);
+    var product = await _inventory.GetProductByName(name);
     
     Utils.DisplayStars();
 
-    if (productIndex == -1)
+    if (product is null)
     {
       Console.WriteLine($"The product with the name {name} is not in the inventory.");
 
@@ -160,21 +169,21 @@ public class InventoryManagementSystem
     switch (choice)
     {
       case "1":
-        string newName = Utils.GetStringInput("Name");
-        
-        _productInventory.SetProductNameAt(productIndex, newName);
+        string newName = Utils.GetStringInput("Name").Capitalize();
+
+        product.Name = newName;
         
         break;
       case "2":
         decimal newPrice = Utils.GetPriceInput();
-        
-        _productInventory.SetProductPriceAt(productIndex, newPrice);
+
+        product.Price = newPrice;
         
         break;
       case "3":
         int newQuantity = Utils.GetQuantityInput();
-        
-        _productInventory.SetProductQuantityAt(productIndex, newQuantity);
+
+        product.Quantity = newQuantity;
 
         break;
       default:
@@ -186,8 +195,17 @@ public class InventoryManagementSystem
     if (edited)
     {
       Utils.DisplayStars();
-      
-      Console.WriteLine("The product has been edited successfully.");
+
+      try
+      {
+        await _inventory.UpdateProduct(product);
+        
+        Console.WriteLine("The product has been edited successfully.");
+      }
+      catch (ProductAlreadyExistsException)
+      {
+        Console.WriteLine("Another product with the same name exists in the inventory; no changes were made.");
+      }
     }
     else
     {
@@ -195,47 +213,40 @@ public class InventoryManagementSystem
     }
   }
 
-  private void HandleDeleteChoice()
+  private async Task HandleDeleteChoice()
   {
     Console.WriteLine("Please enter the name of the product you want to delete.");
     
-    string name = Utils.GetStringInput("Name");
+    string name = Utils.GetStringInput("Name").Capitalize();
 
-    int productIndex = _productInventory.GetProductIndex(name);
+    var product = await _inventory.GetProductByName(name);
     
     Utils.DisplayStars();
 
-    if (productIndex == -1)
+    if (product is null)
     {
       Console.WriteLine($"The product with the name {name} is not in the inventory.");
     }
     else
     {
-      _productInventory.DeleteProductAt(productIndex);
+      await _inventory.DeleteProduct(product);
       
       Console.WriteLine("The product has been deleted successfully.");
     }
   }
 
-  private void HandleSearchChoice()
+  private async Task HandleSearchChoice()
   {
     Console.WriteLine("Please enter the name of the product you are looking for.");
       
-    string name = Utils.GetStringInput("Name");
+    string name = Utils.GetStringInput("Name").Capitalize();
 
-    int productIndex = _productInventory.GetProductIndex(name);
+    var product = await _inventory.GetProductByName(name);
       
     Utils.DisplayStars();
 
-    if (productIndex == -1)
-    {
-      Console.WriteLine($"The product with the name {name} is not in the inventory.");
-    }
-    else
-    {
-      IReadOnlyProduct product = _productInventory.GetProductAt(productIndex);
-        
-      Console.WriteLine($"Here is the information of the product you are looking for:\n{product}");
-    }
+    Console.WriteLine(product is null
+      ? $"The product with the name {name} is not in the inventory."
+      : $"Here is the information of the product you are looking for:\n{product}");
   }
 }
