@@ -1,6 +1,6 @@
 namespace SIMS;
 
-public static class Utilites
+public static class Utilities
 {
   public static string Capitalize(this string str)
   {
