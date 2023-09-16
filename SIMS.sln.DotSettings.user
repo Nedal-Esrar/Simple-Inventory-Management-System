@@ -1,0 +1,12 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2c7a68a6_002D0bc5_002D4e95_002D8b98_002D77f6931f2c05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SqlProductRepositoryTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlProductRepositoryTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6b290399_002D744c_002D4a40_002D81a0_002D000894824683/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SqlProductRepositoryTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlProductRepositoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlConnectionFactoryTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
