@@ -44,6 +44,16 @@ public class SqlProductRepositoryTests
 
     actual.Should().BeSameAs(products);
   }
+  
+  [Fact]
+  public async Task GetAll_AllProducts_ShouldOpenTheConnectionBeforeExecution()
+  {
+    _dapperWrapper
+      .Setup(x => x.GetAll(_dbConnectionMock.Object, SqlCommands.GetAllProducts))
+      .Callback(() => _dbConnectionMock.Verify(x => x.Open(), Times.Once));
+
+    await _sut.GetAll();
+  }
 
   [Fact]
   public async Task GetByName_ProductWithTheSameNameExists_ShouldReturnTheExpectedProduct()
@@ -72,7 +82,20 @@ public class SqlProductRepositoryTests
 
     actual.Should().BeNull();
   }
+  
+  [Fact]
+  public async Task GetByName_ProductName_ShouldOpenTheConnectionBeforeExecution()
+  {
+    var name = _fixture.Create<string>();
+    
+    _dapperWrapper
+      .Setup(x => x.GetByName(_dbConnectionMock.Object, SqlCommands.GetProductByName, 
+        It.Is<object>(param => ParamMatchesName(param, name))))
+      .Callback(() => _dbConnectionMock.Verify(x => x.Open(), Times.Once));
 
+    await _sut.GetByName(name);
+  }
+  
   [Fact]
   public async Task Add_Product_ShouldInvokeDapperWrapperAddOnce()
   {
@@ -81,6 +104,18 @@ public class SqlProductRepositoryTests
     await _sut.Add(product);
     
     _dapperWrapper.Verify(x => x.Add(_dbConnectionMock.Object, SqlCommands.AddProduct, product), Times.Once);
+  }
+  
+  [Fact]
+  public async Task Add_Product_ShouldOpenTheConnectionBeforeExecution()
+  {
+    var product = _fixture.Create<Product>();
+
+    _dapperWrapper
+      .Setup(x => x.Add(_dbConnectionMock.Object, SqlCommands.AddProduct, product))
+      .Callback(() => _dbConnectionMock.Verify(x => x.Open(), Times.Once));
+
+    await _sut.Add(product);
   }
   
   [Fact]
@@ -94,6 +129,18 @@ public class SqlProductRepositoryTests
   }
   
   [Fact]
+  public async Task Update_Product_ShouldOpenTheConnectionBeforeExecution()
+  {
+    var product = _fixture.Create<Product>();
+
+    _dapperWrapper
+      .Setup(x => x.Update(_dbConnectionMock.Object, SqlCommands.UpdateProduct, product))
+      .Callback(() => _dbConnectionMock.Verify(x => x.Open(), Times.Once));
+
+    await _sut.Update(product);
+  }
+  
+  [Fact]
   public async Task Delete_Product_ShouldInvokeDapperWrapperDeleteOnce()
   {
     var product = _fixture.Create<Product>();
@@ -101,5 +148,17 @@ public class SqlProductRepositoryTests
     await _sut.Delete(product);
     
     _dapperWrapper.Verify(x => x.Delete(_dbConnectionMock.Object, SqlCommands.DeleteProduct, product), Times.Once);
+  }
+  
+  [Fact]
+  public async Task Delete_Product_ShouldOpenTheConnectionBeforeExecution()
+  {
+    var product = _fixture.Create<Product>();
+
+    _dapperWrapper
+      .Setup(x => x.Delete(_dbConnectionMock.Object, SqlCommands.DeleteProduct, product))
+      .Callback(() => _dbConnectionMock.Verify(x => x.Open(), Times.Once));
+
+    await _sut.Delete(product);
   }
 }
