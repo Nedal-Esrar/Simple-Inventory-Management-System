@@ -1,4 +1,5 @@
 using AutoMapper;
+using MongoDB.Bson;
 using SIMS.Dtos;
 using SIMS.Exceptions;
 using SIMS.Inventories;
@@ -26,6 +27,8 @@ public class InventoryTests
     _sut = new(_productRepositoryMock.Object, _mapperMock.Object);
 
     _fixture = new();
+    
+    _fixture.Register(ObjectId.GenerateNewId);
   }
   
   [Fact]
@@ -96,7 +99,7 @@ public class InventoryTests
   {
     var dto = _fixture.Create<ProductDto>();
 
-    var differentId = dto.Id + _fixture.Create<int>();
+    var differentId = ObjectId.GenerateNewId();
     
     _productRepositoryMock
       .Setup(x => x.GetByName(dto.Name))
