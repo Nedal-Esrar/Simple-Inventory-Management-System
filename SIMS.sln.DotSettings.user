@@ -36,4 +36,5 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.InventoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+&lt;/SessionState&gt;</s:String>
+	</wpf:ResourceDictionary>
