@@ -19,12 +19,16 @@ public class SqlProductRepository : IProductRepository
   {
     using var dbConnection = _connectionFactory.CreateConnection();
 
+    dbConnection.Open();
+
     return await _dapperWrapper.GetAll(dbConnection, SqlCommands.GetAllProducts);
   }
 
   public async Task<Product?> GetByName(string name)
   {
     using var dbConnection = _connectionFactory.CreateConnection();
+    
+    dbConnection.Open();
       
     return await _dapperWrapper.GetByName(dbConnection, SqlCommands.GetProductByName, new { name });
   }
@@ -32,6 +36,8 @@ public class SqlProductRepository : IProductRepository
   public async Task Add(Product product)
   {
     using var dbConnection = _connectionFactory.CreateConnection();
+    
+    dbConnection.Open();
 
     await _dapperWrapper.Add(dbConnection, SqlCommands.AddProduct, product);
   }
@@ -39,6 +45,8 @@ public class SqlProductRepository : IProductRepository
   public async Task Update(Product product)
   {
     using var dbConnection = _connectionFactory.CreateConnection();
+    
+    dbConnection.Open();
 
     await _dapperWrapper.Update(dbConnection, SqlCommands.UpdateProduct, product);
   }
@@ -46,6 +54,8 @@ public class SqlProductRepository : IProductRepository
   public async Task Delete(Product product)
   {
     using var dbConnection = _connectionFactory.CreateConnection();
+    
+    dbConnection.Open();
 
     await _dapperWrapper.Delete(dbConnection, SqlCommands.DeleteProduct, product);
   }
