@@ -3,17 +3,17 @@ using SIMS.Repositories.SqlRepo;
 
 namespace SIMS.Tests;
 
-public class SqlConnectionFactoryTests
+public class SqlConnectionProviderTests
 {
-  private readonly SqlConnectionFactory _sut;
+  private readonly SqlConnectionProvider _sut;
 
   private readonly string _connectionString;
 
-  public SqlConnectionFactoryTests()
+  public SqlConnectionProviderTests()
   {
     _connectionString = GenerateRandomConnectionString();
 
-    _sut = new SqlConnectionFactory(_connectionString);
+    _sut = new SqlConnectionProvider(_connectionString);
   }
   
   private string GenerateRandomConnectionString()

@@ -13,7 +13,7 @@ var configuration = new ConfigurationBuilder()
   .Build();
 
 var serviceProvider = new ServiceCollection()
-  .AddScoped<ISqlConnectionFactory>(_ => new SqlConnectionFactory(configuration.GetConnectionString("SqlConnection")))
+  .AddScoped<ISqlConnectionProvider>(_ => new SqlConnectionProvider(configuration.GetConnectionString("SqlConnection")))
   .AddScoped<IDapperWrapper, DapperWrapper>()
   .AddScoped<IProductRepository, SqlProductRepository>()
   .AddScoped<IMapper>(_ => new MapperConfiguration(cfg =>

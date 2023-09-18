@@ -20,7 +20,7 @@ public class SqlProductRepositoryTests
     
     _dbConnectionMock = new Mock<IDbConnection>();
     
-    var connectionFactoryMock = new Mock<ISqlConnectionFactory>();
+    var connectionFactoryMock = new Mock<ISqlConnectionProvider>();
 
     connectionFactoryMock
       .Setup(x => x.CreateConnection())

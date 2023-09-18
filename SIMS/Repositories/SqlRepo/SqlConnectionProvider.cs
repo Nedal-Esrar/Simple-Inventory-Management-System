@@ -3,11 +3,11 @@ using System.Data.SqlClient;
 
 namespace SIMS.Repositories.SqlRepo;
 
-public class SqlConnectionFactory : ISqlConnectionFactory
+public class SqlConnectionProvider : ISqlConnectionProvider
 {
   private readonly string _connectionString;
 
-  public SqlConnectionFactory(string connectionString)
+  public SqlConnectionProvider(string connectionString)
   {
     _connectionString = connectionString;
   }

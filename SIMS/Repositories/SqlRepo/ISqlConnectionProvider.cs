@@ -2,7 +2,7 @@ using System.Data;
 
 namespace SIMS.Repositories.SqlRepo;
 
-public interface ISqlConnectionFactory
+public interface ISqlConnectionProvider
 {
   IDbConnection CreateConnection();
 }

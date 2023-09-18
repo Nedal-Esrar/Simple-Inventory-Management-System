@@ -4,20 +4,20 @@ namespace SIMS.Repositories.SqlRepo;
 
 public class SqlProductRepository : IProductRepository
 {
-  private readonly ISqlConnectionFactory _connectionFactory;
+  private readonly ISqlConnectionProvider _connectionProvider;
 
   private readonly IDapperWrapper _dapperWrapper;
 
-  public SqlProductRepository(ISqlConnectionFactory connectionFactory, IDapperWrapper dapperWrapper)
+  public SqlProductRepository(ISqlConnectionProvider connectionProvider, IDapperWrapper dapperWrapper)
   {
-    _connectionFactory = connectionFactory;
+    _connectionProvider = connectionProvider;
 
     _dapperWrapper = dapperWrapper;
   }
 
   public async Task<IEnumerable<Product>> GetAll()
   {
-    using var dbConnection = _connectionFactory.CreateConnection();
+    using var dbConnection = _connectionProvider.CreateConnection();
 
     dbConnection.Open();
 
@@ -26,7 +26,7 @@ public class SqlProductRepository : IProductRepository
 
   public async Task<Product?> GetByName(string name)
   {
-    using var dbConnection = _connectionFactory.CreateConnection();
+    using var dbConnection = _connectionProvider.CreateConnection();
     
     dbConnection.Open();
       
@@ -35,7 +35,7 @@ public class SqlProductRepository : IProductRepository
 
   public async Task Add(Product product)
   {
-    using var dbConnection = _connectionFactory.CreateConnection();
+    using var dbConnection = _connectionProvider.CreateConnection();
     
     dbConnection.Open();
 
@@ -44,7 +44,7 @@ public class SqlProductRepository : IProductRepository
 
   public async Task Update(Product product)
   {
-    using var dbConnection = _connectionFactory.CreateConnection();
+    using var dbConnection = _connectionProvider.CreateConnection();
     
     dbConnection.Open();
 
@@ -53,7 +53,7 @@ public class SqlProductRepository : IProductRepository
 
   public async Task Delete(Product product)
   {
-    using var dbConnection = _connectionFactory.CreateConnection();
+    using var dbConnection = _connectionProvider.CreateConnection();
     
     dbConnection.Open();
 
