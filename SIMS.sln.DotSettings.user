@@ -1,39 +1,13 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=0208a096_002D9ec5_002D4a1c_002Da779_002D067fc64844f1/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2c7a68a6_002D0bc5_002D4e95_002D8b98_002D77f6931f2c05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="SqlProductRepositoryTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.UnitTest1.Test1&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlProductRepositoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=247f14fd_002D59f0_002D42d6_002D9df3_002Dfc9b64a9bfdf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InventoryTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=6b290399_002D744c_002D4a40_002D81a0_002D000894824683/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SqlProductRepositoryTests #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::758143C2-E77D-4254-A65C-A7274967FAA0::net7.0::SIMS.Tests.InventoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlProductRepositoryTests&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.SqlConnectionFactoryTests&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=49043d88_002De583_002D402a_002Da711_002Da5db1761c261/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="All tests from &amp;lt;SIMS.Tests&amp;gt;" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Project Location="/home/nedalesrar/Documents/Simple-Inventory-Management-System/SIMS.Tests" Presentation="&amp;lt;SIMS.Tests&amp;gt;" /&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=896f51d4_002D8da8_002D4860_002D83e1_002D8827da0a3587/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InventoryTests #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::758143C2-E77D-4254-A65C-A7274967FAA0::net7.0::SIMS.Tests.InventoryTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9bf444d1_002D4e93_002D480c_002Da4a0_002Dd3542c20460f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddProduct_ProductWithTheSameNameDoesNotExist_ReposAddShouldBeInvokedOnce" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::758143C2-E77D-4254-A65C-A7274967FAA0::net7.0::SIMS.Tests.InventoryTests.AddProduct_ProductWithTheSameNameDoesNotExist_ReposAddShouldBeInvokedOnce&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9d398ee5_002Db6e3_002D444b_002D826c_002D94681428356b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="AddProduct_ProductWithTheSameNameExists_ShouldThrowProductAlreadyExistsException" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::758143C2-E77D-4254-A65C-A7274967FAA0::net7.0::SIMS.Tests.InventoryTests.AddProduct_ProductWithTheSameNameExists_ShouldThrowProductAlreadyExistsException&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ade3393d_002D8596_002D407e_002D870d_002D6c442c379a47/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="gg" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::07A739D5-063B-4914-BF89-A83E6483CD82::net7.0::SIMS.Tests.InventoryTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d6a685a8_002Dfe7f_002D4f33_002Db12b_002Dd8f993d4a4b4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="InventoryTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::758143C2-E77D-4254-A65C-A7274967FAA0::net7.0::SIMS.Tests.InventoryTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
-&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
+	</wpf:ResourceDictionary>
