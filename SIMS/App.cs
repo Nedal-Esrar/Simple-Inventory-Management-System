@@ -14,13 +14,13 @@ var configuration = new ConfigurationBuilder()
   .Build();
 
 var serviceProvider = new ServiceCollection()
-  .AddScoped<IMongoCollectionFactory>(_ =>
+  .AddScoped<IMongoCollectionProvider>(_ =>
   {
     var client = new MongoClient(configuration.GetConnectionString("MongoConnection"));
 
     var database = client.GetDatabase(MongoEntitiesNames.DatabaseName);
 
-    return new MongoCollectionFactory(database);
+    return new MongoCollectionProvider(database);
   })
   .AddScoped<IMongoDriverWrapper, MongoDriverWrapper>()
   .AddScoped<IProductRepository, MongoDbProductRepository>()

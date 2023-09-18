@@ -7,7 +7,7 @@ namespace SIMS.Tests;
 
 public class MongoDbProductRepositoryTests
 {
-  private readonly Mock<IMongoCollectionFactory> _collectionFactoryMock;
+  private readonly Mock<IMongoCollectionProvider> _collectionFactoryMock;
 
   private readonly Mock<IMongoCollection<Product>> _collectionMock;
 
@@ -18,7 +18,7 @@ public class MongoDbProductRepositoryTests
 
   public MongoDbProductRepositoryTests()
   {
-    _collectionFactoryMock = new Mock<IMongoCollectionFactory>();
+    _collectionFactoryMock = new Mock<IMongoCollectionProvider>();
 
     _collectionMock = new Mock<IMongoCollection<Product>>();
 

@@ -4,9 +4,9 @@ using SIMS.Repositories.MongoRepo;
 
 namespace SIMS.Tests;
 
-public class MongoCollectionFactoryTests
+public class MongoCollectionProviderTests
 {
-  private readonly MongoCollectionFactory _sut;
+  private readonly MongoCollectionProvider _sut;
 
   private readonly Mock<IMongoDatabase> _mongoDbMock;
 
@@ -14,7 +14,7 @@ public class MongoCollectionFactoryTests
 
   private readonly Fixture _fixture;
 
-  public MongoCollectionFactoryTests()
+  public MongoCollectionProviderTests()
   {
     _mongoDbMock = new Mock<IMongoDatabase>();
     
@@ -24,7 +24,7 @@ public class MongoCollectionFactoryTests
       .Setup(x => x.GetCollection<Product>(It.IsAny<string>(), null))
       .Returns(_mongoCollectionMock.Object);
 
-    _sut = new MongoCollectionFactory(_mongoDbMock.Object);
+    _sut = new MongoCollectionProvider(_mongoDbMock.Object);
 
     _fixture = new Fixture();
   }

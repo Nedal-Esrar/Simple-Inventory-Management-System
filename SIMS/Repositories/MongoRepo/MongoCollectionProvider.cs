@@ -2,11 +2,11 @@ using MongoDB.Driver;
 
 namespace SIMS.Repositories.MongoRepo;
 
-public class MongoCollectionFactory : IMongoCollectionFactory
+public class MongoCollectionProvider : IMongoCollectionProvider
 {
   private readonly IMongoDatabase _mongoDatabase;
 
-  public MongoCollectionFactory(IMongoDatabase mongoDatabase)
+  public MongoCollectionProvider(IMongoDatabase mongoDatabase)
   {
     _mongoDatabase = mongoDatabase;
   }

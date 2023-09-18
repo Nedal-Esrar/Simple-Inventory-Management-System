@@ -5,13 +5,13 @@ namespace SIMS.Repositories.MongoRepo;
 
 public class MongoDbProductRepository : IProductRepository
 {
-  private readonly IMongoCollectionFactory _collectionFactory;
+  private readonly IMongoCollectionProvider _collectionProvider;
 
   private readonly IMongoDriverWrapper _mongoDriverWrapper;
 
-  public MongoDbProductRepository(IMongoCollectionFactory collectionFactory, IMongoDriverWrapper mongoDriverWrapper)
+  public MongoDbProductRepository(IMongoCollectionProvider collectionProvider, IMongoDriverWrapper mongoDriverWrapper)
   {
-    _collectionFactory = collectionFactory;
+    _collectionProvider = collectionProvider;
     
     _mongoDriverWrapper = mongoDriverWrapper;
   }
@@ -27,7 +27,7 @@ public class MongoDbProductRepository : IProductRepository
 
   private IMongoCollection<Product> GetProductsCollection()
   {
-    return _collectionFactory.GetCollection<Product>(MongoEntitiesNames.ProductsCollectionName);
+    return _collectionProvider.GetCollection<Product>(MongoEntitiesNames.ProductsCollectionName);
   }
 
   public async Task<Product?> GetByName(string name)
