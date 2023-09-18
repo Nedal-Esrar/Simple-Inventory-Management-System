@@ -1,8 +1,10 @@
+using MongoDB.Bson;
+
 namespace SIMS.Dtos;
 
 public class ProductDto
 {
-  public int Id { get; }
+  public ObjectId Id { get; }
   
   public string Name { get; set; }
   

@@ -1,8 +1,13 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace SIMS.Models;
 
 public class Product
 {
-  public int Id { get; set; }
+  [BsonId]
+  [BsonRepresentation(BsonType.ObjectId)]
+  public ObjectId Id { get; set; }
   
   public string Name { get; set; }
   
